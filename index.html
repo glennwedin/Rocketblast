@@ -1,33 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-	<title>Spillproto</title>
-	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
-	<script src="js/app.js"></script>
-	<script>
-		
-	</script>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, user-scalable=0"
+        />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent"
+        />
+        <title>Spillproto</title>
+        <link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+        <script src="js/app.js" defer></script>
+    </head>
+    <body>
+        <div id="bg"></div>
 
-<div id="bg"></div>	
+        <canvas id="gamecanvas"></canvas>
+        <div id="hud">
+            <div id="timer"></div>
+            <div id="lifebar"><div id="lifebarfill" data-life=""></div></div>
 
-<canvas id="gamecanvas"></canvas>
-<div id="hud">
-	<div id="timer"></div>
-	<div id="lifebar">
-		<div id="lifebarfill" data-life="">
-		</div>
-	</div>
-
-	<div id="score">
-		0
-	</div>
-</div>
-
-</body>
+            <div id="score">0</div>
+        </div>
+    </body>
 </html>

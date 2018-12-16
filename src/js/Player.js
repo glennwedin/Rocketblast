@@ -1,14 +1,36 @@
+import player from '../../config/player.json';
 export default class Player {
-	constructor () {
-		var th = this;
-		//Hent info fra server
-		BOOM.utils.readFile('../config/player.json', function (json) {
-			json = JSON.parse(json);
-			th.playerSettings = json;
-		});
-	}
+    constructor() {
+        var th = this;
 
-	getCurrentLevel () {
-		return this.playerSettings.atLevel;
-	}
+        if (!window.localStorage.getItem('playersettings')) {
+            window.localStorage.setItem(
+                'playersettings',
+                JSON.stringify(player)
+            );
+        }
+        th.playerSettings = JSON.parse(
+            window.localStorage.getItem('playersettings')
+        );
+    }
+
+    getCurrentLevel() {
+        return this.playerSettings.atLevel;
+    }
+
+    increaseLevel() {
+        this.playerSettings.atLevel += 1;
+        this.savePlayerInfo();
+    }
+
+    savePlayerInfo() {
+        if (window.localStorage.getItem('playersettings')) {
+            window.localStorage.setItem(
+                'playersettings',
+                JSON.stringify(this.playerSettings)
+            );
+            return true;
+        }
+        throw new Error('No playersettings available');
+    }
 }

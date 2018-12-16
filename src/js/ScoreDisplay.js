@@ -1,30 +1,33 @@
 export default class ScoreDisplay {
-	constructor () {
-		this.opacity = 0;
-		this.score = 0;
-	}
+    constructor() {
+        this.opacity = 0;
+        this.score = 0;
+        this.timeout = null;
+    }
 
-	setScore (score) {
-		if(score !== 0) {
-			this.opacity = 0;
-			this.score = score;
-		}
-	}
+    setScore(score) {
+        if (score !== 0) {
+            clearTimeout(this.timeout);
 
-	draw () {
-		if(this.score !== 0) {
-			if(this.opacity <= 1.00) {
-				this.opacity += 0.05;
-			}
-			var c = BOOM.canvas.ctx;
-				c.font = "100px arial";
-				c.fillText(this.score, 200, 200);
-				c.fillStyle = "rgba(240,238,59,"+this.opacity+")";
+            const th = this;
+            this.opacity = 0;
+            this.score = score;
+            this.timeout = setTimeout(function() {
+                th.score = 0;
+                th.opacity = 0;
+            }, 1000);
+        }
+    }
 
-			var th = this;
-			setTimeout(function ()  {
-				th.score = 0;
-			},1000);
-		}
-	}
+    draw() {
+        if (this.score !== 0) {
+            if (this.opacity <= 1.0) {
+                this.opacity += 0.1;
+            }
+            var c = BOOM.canvas.ctx;
+            c.font = '100px arial';
+            c.fillText(this.score, 200, 200);
+            c.fillStyle = 'rgba(240,238,59,' + this.opacity + ')';
+        }
+    }
 }
