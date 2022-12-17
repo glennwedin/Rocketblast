@@ -63,7 +63,7 @@ export default (game = {
                     hitdamage: -50
                 };
                 break;
-            case 5: //bombe som gir straffepoeng om man treffer den
+            case 5: //pakke som gir health om man treffer den
                 return {
                     color: 'green',
                     image: BOOM.gfx.healthcrate,

@@ -1,31 +1,33 @@
-import Bomb from "./Bomb";
+import Bomb from './Bomb';
 export default class Bombgroup {
-	constructor (difficulty) {
-		this.bombs = [];
-		this.difficulty = difficulty;
-		this.settings = BOOM.bombsettings(difficulty);
-		this.finished = false;
+    constructor(difficulty) {
+        this.bombs = [];
+        this.difficulty = difficulty;
+        this.settings = BOOM.bombsettings(difficulty);
+        this.finished = false;
 
-		//console.log(this.settings);
-		//Fyll opp gruppen med bomber
-		var firework;
-		for(var i = 0; i < this.settings.count; i++) {
-			firework = new Bomb(this.settings);
-			this.bombs.push(firework);
-		}
-	}
+        // adjust settings for difficulty
 
-	done () {
-		if(!this.finished) {
-			this.finished = true;
-			BOOM.currentLevel.score += this.settings.points;
-			BOOM.currentLevel.scoreDisplay.setScore(this.settings.points);
-		}
-	}
+        //console.log(this.settings);
+        //Fyll opp gruppen med bomber
+        var firework;
+        for (var i = 0; i < this.settings.count; i++) {
+            firework = new Bomb(this.settings);
+            this.bombs.push(firework);
+        }
+    }
 
-	move () {
-		this.bombs.forEach(function (bomb, index) {
-			bomb.move(0,1);
-		});
-	}
+    done() {
+        if (!this.finished) {
+            this.finished = true;
+            BOOM.currentLevel.score += this.settings.points;
+            BOOM.currentLevel.scoreDisplay.setScore(this.settings.points);
+        }
+    }
+
+    move() {
+        this.bombs.forEach(function(bomb, index) {
+            bomb.move(0, 1);
+        });
+    }
 }

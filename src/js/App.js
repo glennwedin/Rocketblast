@@ -1,10 +1,10 @@
 window.BOOM = {};
 
-('use strict');
+("use strict");
 
 //Bootstrap
-import Game from './Game';
-window.onload = function() {
-    window.BOOM = Game;
-    BOOM.init();
+import Game from "./Game";
+window.onload = function () {
+  window.BOOM = Game;
+  BOOM.init();
 };
